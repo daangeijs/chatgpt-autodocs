@@ -1,6 +1,6 @@
 site_name: MkLorum
 site_url: https://daangeijs.github.io/chatgpt-autodocs/
-
+theme: readthedocs
 nav:
     - Home: test.md
     - Page2: mkdocs.md
