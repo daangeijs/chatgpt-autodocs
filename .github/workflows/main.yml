@@ -38,7 +38,7 @@ jobs:
       run: |
         python -m pip install mkdocs
     - name: Build mkdocs config
-      run: python generate_mkdocs.py
+      run: python .github/workflows/generate_mkdocs.py
     - name: Build site
       run: |
         mkdocs build
