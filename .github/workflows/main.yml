@@ -19,9 +19,9 @@ jobs:
       - name: Run python dependencies
         run: pip install -r .github/workflows/requirements.txt
       - uses: technote-space/get-diff-action@v6
-#       - name: Explain code
-#         run: |
-#           python .github/workflows/explain_code.py --sha=${{ github.sha }} --username='${{ env.openai_username }}' --password='${{ env.openai_password }}'
+      - name: Explain code
+        run: |
+          python .github/workflows/explain_code.py --sha=${{ github.sha }} --username='${{ env.openai_username }}' --password='${{ env.openai_password }}'
       - name: Build mkdocs config
         run: python .github/workflows/generate_mkdocs.py
       - uses: EndBug/add-and-commit@v9
