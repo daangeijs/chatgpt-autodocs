@@ -1,4 +1,4 @@
-pages:
+nav:
   - docs:
       - docs/test.md
       - docs/mkdocs.md
