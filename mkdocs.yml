@@ -1,10 +1,10 @@
 pages:
   - docs:
-      - test.md
-      - mkdocs.md
+      - docs/test.md
+      - docs/mkdocs.md
   - docs/.github: []
   - docs/.github/workflows:
-      - generate_mkdocs.md
+      - docs/.github/workflows/generate_mkdocs.md
 site_name: My MkDocs Site
 site_url: https://daangeijs.github.io/chatgpt-autodocs/
 theme: readthedocs
