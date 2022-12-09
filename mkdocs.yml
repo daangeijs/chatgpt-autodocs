@@ -1,9 +1,10 @@
 nav:
-  - root:
-      - test.md
-      - mkdocs.md
-  - .github/workflows:
-      - .github/workflows/generate_mkdocs.md
+  - docs:
+      - /test.md
+      - /mkdocs.md
+  - docs/.github: []
+  - docs/.github/workflows:
+      - ithub/workflows/generate_mkdocs.md
 site_name: My MkDocs Site
 site_url: https://daangeijs.github.io/chatgpt-autodocs/
 theme: readthedocs
