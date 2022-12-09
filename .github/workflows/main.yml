@@ -1,0 +1,29 @@
+---
+on:
+  - push
+
+# Define the environment variableshhh
+env:
+  # Set the username and password for the ChatGPT class
+  openai_username: ${{ secrets.OPENAI_USERNAME }}
+  openai_password: ${{ secrets.OPENAI_PASSWORD }}
+
+jobs:
+  chatgpt_explain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: 3.x
+      - name: Run python dependencies
+        run: pip install -r .github/workflows/requirements.txt
+      - uses: technote-space/get-diff-action@v6
+      - name: Explain code
+        run: |
+          python .github/workflows/explain_code.py --sha=${{ github.sha }} --username='${{ env.openai_username }}' --password='${{ env.openai_password }}'
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: "Add automatically generated documentation files"
+          committer_name: GitHub Actions
+          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
