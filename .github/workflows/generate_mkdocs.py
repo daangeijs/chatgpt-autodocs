@@ -19,7 +19,7 @@ def generate_mkdocs_settings(folder):
         'site_name': 'My MkDocs Site',
         'site_url': 'https://daangeijs.github.io/chatgpt-autodocs/',
         'theme': 'readthedocs',
-        'pages': pages
+        'nav': pages
     }
 
 mkdocs_settings = generate_mkdocs_settings('docs')
