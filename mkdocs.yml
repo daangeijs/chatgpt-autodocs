@@ -1,6 +1,10 @@
-site_name: MkLorum
+nav:
+- docs:
+  - test.md
+  - mkdocs.md
+- docs/.github: []
+- docs/.github/workflows:
+  - generate_mkdocs.md
+site_name: My MkDocs Site
 site_url: https://daangeijs.github.io/chatgpt-autodocs/
 theme: readthedocs
-nav:
-    - Home: test.md
-    - Page2: mkdocs.md
