@@ -12,7 +12,7 @@ def generate_mkdocs_settings(folder):
     for path, subdirs, files in os.walk(folder):
         page_list = []
         for name in files:
-            page_list.append(name)
+            page_list.append(path+'/'+name)
         pages.append({path: page_list})
 
     return {
