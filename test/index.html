@@ -40,16 +40,19 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">root</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Test</a>
+              <p class="caption"><span class="caption-text">docs</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="/test.md">None</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../mkdocs/">Mkdocs</a>
+                  <li class="toctree-l1"><a class="" href="/mkdocs.md">None</a>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">.github/workflows</span></p>
+              <p class="caption"><span class="caption-text">docs/.github</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="" href="../.github/workflows/generate_mkdocs.md">None</a>
+              </ul>
+              <p class="caption"><span class="caption-text">docs/.github/workflows</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="../ithub/workflows/generate_mkdocs.md">None</a>
                   </li>
               </ul>
       </div>
@@ -66,7 +69,6 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>root &raquo;</li>
       <li>Test</li>
     <li class="wy-breadcrumbs-aside">
     </li>
@@ -76,41 +78,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <pre><code>{
-    &quot;server&quot;: {
-        &quot;port&quot;: 8080,
-        &quot;host&quot;: &quot;0.0.0.0&quot;
-    },
-    &quot;database&quot;: {
-        &quot;host&quot;: &quot;localhost&quot;,
-        &quot;port&quot;: 27017,
-        &quot;name&quot;: &quot;my_database&quot;
-    },
-    &quot;logging&quot;: {
-        &quot;level&quot;: &quot;info&quot;,
-        &quot;format&quot;: &quot;json&quot;,
-        &quot;output&quot;: &quot;stdout&quot;
-    }
+                <p>To explain the code, I will provide examples of each of the code blocks in the original code:</p>
+<p>Copy code
+import os</p>
+<p>import yaml</p>
+<p>class MyDumper(yaml.Dumper):</p>
+<pre><code>def increase_indent(self, flow=False, indentless=False):
+    return super(MyDumper, self).increase_indent(flow, False)
+</code></pre>
+<p>This code imports the os and yaml modules. It then defines the MyDumper class, which is a subclass of yaml.Dumper. This class overrides the increase_indent method to prevent the indentless parameter from being set to True, which would otherwise cause the generated YAML to be "compact" in format.</p>
+<p>Copy code
+def generate_mkdocs_settings(folder):
+    pages = []
+    for path, subdirs, files in os.walk(folder):
+        page_list = []
+        for name in files:
+            page_list.append(path[7:]+'/'+name)
+        pages.append({path: page_list})</p>
+<pre><code>return {
+    'site_name': 'My MkDocs Site',
+    'site_url': 'https://daangeijs.github.io/chatgpt-autodocs/',
+    'theme': 'readthedocs',
+    'nav': pages
 }
 </code></pre>
-<p>The code above is written in JSON and represents a configuration file for a server. This configuration file specifies various settings for the server, such as its port number, hostname, and database connection settings. </p>
-<p>The <code>server</code> object contains settings specific to the server itself. The <code>port</code> property specifies the port number that the server will listen on, while the <code>host</code> property specifies the hostname or IP address that the server will bind to.</p>
-<p>The <code>database</code> object contains settings for connecting to a database. The <code>host</code> and <code>port</code> properties specify the hostname and port number of the database server, while the <code>name</code> property specifies the name of the database to connect to.</p>
-<p>The <code>logging</code> object contains settings for logging. The <code>level</code> property specifies the level of logging to enable, with options such as <code>debug</code>, <code>info</code>, and <code>error</code>. The <code>format</code> property specifies the format in which log messages will be output, such as JSON or plain text. The <code>output</code> property specifies where log messages will be output, such as to a file or to the console (<code>stdout</code>).</p>
-<p>Summary:</p>
-<ul>
-<li>The code is a JSON configuration file for a server</li>
-<li>The file specifies settings for the server, its database connection, and logging</li>
-<li>The <code>server</code> object contains settings for the server itself, such as its port number and hostname</li>
-<li>The <code>database</code> object contains settings for connecting to a database, such as the hostname and port number of the database server and the name of the database</li>
-<li>The <code>logging</code> object contains settings for logging, such as the logging level and output format and destination.</li>
-</ul>
+<p>This code defines the generate_mkdocs_settings function. This function takes a folder parameter and uses it to create a list of pages for the website. The function does this by using the os.walk function to traverse the directory tree under the given folder. For each file in the tree, the function creates a dictionary that maps the file path to the file name. This dictionary is then added to a list of pages. The function then returns a dictionary of settings for the website, including the list of pages, the site name, URL, and theme.</p>
+<p>Copy code
+mkdocs_settings = generate_mkdocs_settings('docs')</p>
+<p>a = yaml.dump(mkdocs_settings, Dumper=MyDumper, default_flow_style=False)</p>
+<p>with open('mkdocs.yml', 'w') as f:
+    f.write(a)
+This code calls the generate_mkdocs_settings function with the 'docs' folder as the argument. The resulting dictionary of settings is then passed to the yaml.dump function, along with the MyDumper class and the default_flow_style parameter set to False. This causes the YAML output to be formatted in a more readable way. The generated YAML is then written to a file called mkdocs.yml using a with statement and a file handle.</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../mkdocs/" class="btn btn-neutral float-right" title="Mkdocs">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -132,8 +133,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-    
-      <span><a href="../mkdocs/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
