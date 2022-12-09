@@ -39,7 +39,7 @@ def main(sha, username, password):
             contents = f.read()
 
         # Use ChatGPT to generate an explanation of the file's contents
-        question_phrase = "Markdown string explaining in very extensively what this code does and end with a summary in bullets: \n \n"
+        question_phrase = "Explain the following code by giving pieces of code as example: \n \n"
         input = question_phrase + contents
         explanation = model.chat(input)
 
