@@ -2,6 +2,10 @@ import os
 
 import yaml
 
+class MyDumper(yaml.Dumper):
+
+    def increase_indent(self, flow=False, indentless=False):
+        return super(MyDumper, self).increase_indent(flow, False)
 
 def generate_mkdocs_settings(folder):
     pages = []
@@ -15,12 +19,12 @@ def generate_mkdocs_settings(folder):
         'site_name': 'My MkDocs Site',
         'site_url': 'https://daangeijs.github.io/chatgpt-autodocs/',
         'theme': 'readthedocs',
-        'nav': pages
+        'pages': pages
     }
 
 mkdocs_settings = generate_mkdocs_settings('docs')
 
-a = yaml.dump(mkdocs_settings)
+a = yaml.dump(mkdocs_settings, Dumper=MyDumper, default_flow_style=False)
 
 with open('mkdocs.yml', 'w') as f:
     f.write(a)
