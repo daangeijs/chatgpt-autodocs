@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://daangeijs.github.io/chatgpt-autodocs/</loc>
-         <lastmod>2022-12-09</lastmod>
+         <lastmod>2022-12-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://daangeijs.github.io/chatgpt-autodocs/mkdocs/</loc>
-         <lastmod>2022-12-09</lastmod>
+         <lastmod>2022-12-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
